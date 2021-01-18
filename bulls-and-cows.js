@@ -3,17 +3,20 @@ var result = document.createElement("h1");
 var form = document.createElement("form");
 var input = document.createElement("input");
 var button = document.createElement("button");
-var numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var answerArray = [];
+var numArray;
+var answerArray;
 var chance = 0;
 
-for(var i=0 ; i<4 ; i+=1) {
-    var selected = numArray.splice(Math.floor(Math.random() * (10 - i)), 1)[0]; // Array.splice(위치, 갯수)
-    answerArray.push(selected);
+function numGenerator() {
+    numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    answerArray = [];
+    for(var i=0 ; i<4 ; i+=1) {
+        var selected = numArray.splice(Math.floor(Math.random() * (10 - i)), 1)[0]; // Array.splice(위치, 갯수)
+        answerArray.push(selected);
+    }
 }
 
-console.log(answerArray);
-
+numGenerator();
 body.append(result);
 document.body.append(form);
 input.type = "text";
@@ -33,28 +36,18 @@ form.addEventListener("submit", function callBack(event) {
         result.textContent = "HomeRun!!!";
         input.value = "";
         input.focus();
-        numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-        answerArray = [];
-        for (var i=0 ; i<4 ; i+=1) {
-            var selected = numArray.splice(Math.floor(Math.random() * (10 - i)), 1)[0]; // Array.splice(위치, 갯수)
-            answerArray.push(selected); 
-        }
+        numGenerator();
     }
     else {
         var myAnswerArray = myAnswer.split("");
         var strike = 0;
         var ball = 0;
         chance += 1;
-        if (chance > 4) {
+        if (chance > 3) {
             result.textContent = "Fail T^T. " + "The answer was " + answerArray.join("") + ".";
             input.value = "";
             input.focus();
-            numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-            answerArray = [];
-            for (var i=0 ; i<4 ; i+=1) {
-                var selected = numArray.splice(Math.floor(Math.random() * (10 - i)), 1)[0]; // Array.splice(위치, 갯수)
-                answerArray.push(selected); 
-            }
+            numGenerator();
             chance = 0;
         }
         else {
