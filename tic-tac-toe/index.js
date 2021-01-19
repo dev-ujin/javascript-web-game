@@ -2,7 +2,6 @@ var body = document.body;
 var table = document.createElement("table");
 var rowArray = [];
 var colArray = [];
-<<<<<<< HEAD
 var turn = "X";
 var result = document.createElement("div");
 
@@ -72,24 +71,4 @@ for (var i=1 ; i<=3 ; i+=1) {
 }
 body.appendChild(table);
 body.appendChild(result);
-=======
 
-var clickHandler = function(event) {
-    console.log(event.target);
-}
-
-for (var i=1 ; i<=3 ; i+=1) {
-    var row = document.createElement("tr");
-    rowArray.push(row);
-    colArray.push([]);
-    for(var j=1 ; j<=3 ; j+=1) {
-        var col = document.createElement("td");
-        col.addEventListener("click", clickHandler);
-        colArray[i-1].push(col);
-        row.appendChild(col);
-    }
-    table.appendChild(row);
-}
-body.appendChild(table);
-
->>>>>>> d4790c5 (:art: Make directory per game)
