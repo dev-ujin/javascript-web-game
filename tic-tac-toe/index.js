@@ -10,16 +10,16 @@ var clickHandler = function(event) {
 }
 
 for (var i=1 ; i<=3 ; i+=1) {
-    var row = document.createElement("tr");
-    rowArray.push(row);
+    var tr = document.createElement("tr");
+    rowArray.push(tr);
     colArray.push([]);
     for(var j=1 ; j<=3 ; j+=1) {
-        var col = document.createElement("td");
-        col.addEventListener("click", clickHandler);
-        colArray[i-1].push(col);
-        row.appendChild(col);
+        var td = document.createElement("td");
+        td.addEventListener("click", clickHandler);
+        colArray[i-1].push(td);
+        tr.appendChild(td);
     }
-    table.appendChild(row);
+    table.appendChild(tr);
 }
 body.appendChild(table);
 
